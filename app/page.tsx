@@ -4,7 +4,7 @@ import { useInfinityScroll } from "./hooks/useInfinityScroll";
 import { perOneHundred } from "./numGenerator";
 export default function App() {
 	const ulBottomRef = useRef<HTMLDivElement>(null);
-	const data = useInfinityScroll(ulBottomRef, perOneHundred);
+	const { data, isLoading } = useInfinityScroll(ulBottomRef, perOneHundred);
 	return (
 		<div>
 			<ul>
@@ -13,6 +13,7 @@ export default function App() {
 				))}
 				<div ref={ulBottomRef} />
 			</ul>
+			{isLoading && <p>Loading...</p>}
 		</div>
 	);
 }
